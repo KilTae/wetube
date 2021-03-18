@@ -2,8 +2,9 @@ import express from "express"; // const express = require('express');를 최신�
 import "core-js";
 import morgan from "morgan";
 import helmet from "helmet";
-import cookieparser from "cookie-parser"
-import bodyparser from "body-parser"
+import cookieparser from "cookie-parser";
+import bodyparser from "body-parser";
+import { userRouter } from "./router";
  // node module을 어딘가에 가지고 옴  express를 내 파일들 속에서 찾으려고 함.  아님 없으면 node-modul에서 찾으려고 한다.
 const app = express(); 
 const PORT=4000;
@@ -20,3 +21,6 @@ app.use(morgan("div"));
 app.use(helmet());
 app.get("/",handleHome); //누군가가 app에 접속하게 되면 handlehome을 부름
 app.get("/profile",handleProfile);
+app.use("/user",userRouter); //누가 user경로로 접속하면 userRouter을 전체 다 사용하겠다는 의미이다.
+
+export default app;
