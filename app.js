@@ -4,23 +4,23 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieparser from "cookie-parser";
 import bodyparser from "body-parser";
-import { userRouter } from "./router";
+import userRouter from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
+import globalRouter from "./routers/globalRouter";
+import routes from "./routes";
  // node module을 어딘가에 가지고 옴  express를 내 파일들 속에서 찾으려고 함.  아님 없으면 node-modul에서 찾으려고 한다.
 const app = express(); 
 const PORT=4000;
-
-
-
-const handleHome=(req,res)=>res.send("hello baby");
-const handleProfile =(req,res)=> res.send("You are on my profile");
+app.set('view engine', "pug");
 app.use(cookieparser());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(morgan("div"));
-
 app.use(helmet());
-app.get("/",handleHome); //누군가가 app에 접속하게 되면 handlehome을 부름
-app.get("/profile",handleProfile);
-app.use("/user",userRouter); //누가 user경로로 접속하면 userRouter을 전체 다 사용하겠다는 의미이다.
+
+
+app.use(routes.home,globalRouter); // /join , /login /serch 
+app.use(routes.users,userRouter); //누가 user경로로 접속하면 userRouter을 전체 다 사용하겠다는 의미이다.
+app.use(routes.videos,videoRouter);
 
 export default app;
