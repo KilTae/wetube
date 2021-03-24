@@ -1,8 +1,9 @@
 import routes from "../routes";
 import express from "express";
+import { home, like, who } from './usercontroller';
 const userrouters=express.Router();
 
-userrouters.get(routes.home,(req,res)=>res.send("골져스"));
-userrouters.get(routes.like,(req,res)=>res.send("좋아요"));
-userrouters.get(routes.who,(req,res)=>res.send("Who am I?"));
+userrouters.get(routes.home,home);
+userrouters.get(routes.like,like);
+userrouters.get(routes.who,who);
 export default userrouters;

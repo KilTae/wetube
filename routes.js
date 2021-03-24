@@ -8,10 +8,11 @@ const SEARCH="/search";
 //users
 
 const USERS="/users";
+const EDIT_PROFILE="/edit-profile";
 const USERS_DETAIL="/:id"; // 만약에 유저라면 아이디를 부여한다. : <- 이 부호는 값이 변한다는 것을 뜻 한다.
 
 //users/1
-const EDIT_PROFILE="/edit-profile";
+
 const CHANGE_PASSWORD="/change-password";
 
 //videos

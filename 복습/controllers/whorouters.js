@@ -1,6 +1,7 @@
 import routes from "../routes";
 import express from "express";
+import { like } from './usercontroller';
 const whorouters=express.Router();
 
-whorouters.get(routes.like,(req,res)=>res.send("who like"));
+whorouters.get(routes.like,like);
 export default whorouters;
