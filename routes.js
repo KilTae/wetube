@@ -1,3 +1,5 @@
+import { usersdetail } from './controllers/userController';
+
 //전역적으로 선언
 const Home = "/";
 const JOIN="/join";
@@ -31,14 +33,37 @@ const routes={
     logout:LOGOUT,
     search:SEARCH,
     users:USERS,
-    usersdetail:USERS_DETAIL,
+    usersdetail:id =>{
+        if(id){
+            return `/users/${id}`;
+
+
+
+
+        }else {
+            return USERS_DETAIL;
+        }
+
+
+    },
+
+
     editprofile:EDIT_PROFILE,
     changepassword:CHANGE_PASSWORD,
     videos:VIDEOS,
     upload:UPLOAD,
-    videosdetail:VIDEO_DETAIL,
+    videosdetail:id =>{
+        if(id){
+            return `/videos/${id}`;
+
+        }else {
+            return VIDEO_DETAIL;
+        }
+
+
+    },
     editvideo:EDIT_VIDEO,
     deletevideo:DELETE_VIDEO
-};
+    };
 
 export default routes; // what export ???  파일로 export한다는 뜻이다.

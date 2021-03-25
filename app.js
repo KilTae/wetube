@@ -12,7 +12,7 @@ import {localsMiddleware} from "./middlewares";
  // node module을 어딘가에 가지고 옴  express를 내 파일들 속에서 찾으려고 함.  아님 없으면 node-modul에서 찾으려고 한다.
 const app = express(); 
 const PORT=4000;
-app.use(helmet());
+app.use(helmet({contentSecurityPolicy:false}));
 app.set('view engine', "pug");
 app.use(cookieparser());
 app.use(bodyparser.json());
