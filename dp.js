@@ -1,63 +1,18 @@
-export const videos1 =[
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
+
+mongoose.connect(
+    process.env.MONGO_URL,
     {
-
-        id:3243,
-        title: 'Video awesom',
-        description: 'This is somthing I love',
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator:{
-            id:123123,
-            name:"길태연",
-            email:"jookinho@naver.com",
-
-        }
-
-
-
-
-
-    },
-        {
-
-        id:234234,
-        title: 'Video super',
-        description: 'This is somthing I love',
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator:{
-            id:123123,
-            name:"길태연",
-            email:"jookinho@naver.com",
-
-        }
-
-
-
-
-
-    },
-        {
-
-        id:345345,
-        title: 'Video nice',
-        description: 'This is somthing I love',
-        views:24,
-        videoFile:"https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
-        creator:{
-            id:123123,
-            name:"길태연",
-            email:"jookinho@naver.com",
-
-        }
-
-
-
-
-
+        useNewUrlParser:true, //새로운 버전의 mongoose는 이런 식으로 confihuration을 보낼 수 있다.
+        useFindAndModify:false,
+        useUnifiedTopology:true
     }
-
-
-
-
-];
+    
+    );
+const db=mongoose.connection;
+const handleopen=()=>console.log("연결함");
+const handelerror=()=>console.log(`에러야 에러 : ${error}`);
+db.once("open",handleopen);
+db.on("error",handelerror);

@@ -20,11 +20,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(morgan("div"));
 
 //local 기능을 사용하면 변수에 접근할 수 있다.
-
-
-
 app.use(localsMiddleware);
-
 app.use(routes.home,globalRouter); // /join , /login /serch 
 app.use(routes.users,userRouter); //누가 user경로로 접속하면 userRouter을 전체 다 사용하겠다는 의미이다.
 app.use(routes.videos,videoRouter);

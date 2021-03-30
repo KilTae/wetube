@@ -1,12 +1,10 @@
 
 import express from "express";
 import {home,search} from "../controllers/videoController"
-import {login,logout, getJoin, postJoin, getlogin, postlogin} from "../controllers/userController"
+import {login,logout, getJoin, postJoin, getlogin, postlogin, users} from "../controllers/userController"
 
 import routes from '../routes';
 import routers from "../routes";
-
-
 const globalRouter = express.Router(); //이 녀석을 내보낼 수 있다.ㄴ
 
 globalRouter.get(routes.join,getJoin);
